@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Budget Manager</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta http-equiv='cache-control' content='no-cache'>
+        <meta http-equiv='expires' content='0'>
+        <meta http-equiv='pragma' content='no-cache'>
+    </head>
+    <body>
+
+        <div class="toppdbudget">
+            <a href="#">
+                <h3>Annual Budget</h3>
+            </a>
+            <div>
+                <table id="table">
+                    <tr>
+                        <th class="th">Client Name</th>
+                        <th class="th">Project Name</th>
+                        <th class="th">Budget</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="backbtn">
+            <a href="main.html">Back</a>
+        </div>
+
+    <script>
+
+        var data = JSON.parse(localStorage.getItem('data')) || [];
+        var table = document.getElementById('table');
+
+        var total = 0;
+        for(var k in data){
+            var row = table.insertRow();
+            var clientName = row.insertCell();
+            var projName = row.insertCell();
+            var budget = row.insertCell();
+            clientName.innerHTML = data[k].clientName;
+            projName.innerHTML = data[k].projName;
+            budget.innerHTML = '$'+data[k].budget;
+            total = total + parseInt(data[k].budget);
+        }
+
+        var totalRow = table.insertRow();
+        var totalCell1 = totalRow.insertCell();
+        var totalCell2 = totalRow.insertCell();
+        var totalCell3 = totalRow.insertCell();
+        totalCell3.innerHTML = '$'+total;
+
+    </script>
+
+    </body>
+</html>

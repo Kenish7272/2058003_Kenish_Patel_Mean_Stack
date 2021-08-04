@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>Program Manager</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head> 
+<body>
+<div class="toppdbudget">
+    <form id="budget-form">
+        <a href="#">
+            <h3>Add New Budget</h3>
+        </a>
+        <div class="center">
+            <label class="clientlable">Client Name</label>
+            <input id="client_name" type="text" placeholder=""  required>
+        </div>
+        <div class="center">
+            <label>Project Name</label>
+            <input id="proj_name" type="text" placeholder="" required>
+        </div>
+        <div class="center">
+            <label class="budgetlable">Budget</label>
+            <input id="budget" type="number" placeholder=""  required>
+        </div>
+        <div class="abtn">
+            <button type="submit" onclick="event.preventDefault(); submit_form();" class="aspace">Add</button>
+            <button type="reset">Clear</button>
+        </div>
+    </form>
+</div>
+<div class="backbtn">
+    <a href="main.html">Back</a>
+    <form id="next" action="budget.html" style="display: none">
+        <input type="submit" value="" />
+    </form>
+</div>
+<script>
+    function submit_form(e) {
+
+        var oldData = JSON.parse(localStorage.getItem('data')) || [];
+
+        var length = 0;
+        for(var k in oldData) if(oldData.hasOwnProperty(k)) length++;
+
+        const value = document.getElementById("client_name").value;
+        const value1 = document.getElementById("proj_name").value;
+        const value2 = document.getElementById("budget").value;
+        var values = {
+            'clientName': value,
+            'projName': value1,
+            'budget': value2,
+        };
+
+        oldData[length] = values
+        localStorage.setItem("data", JSON.stringify(oldData));
+
+        document.getElementById("budget-form").reset();
+        alert('Record Added Successfully')
+
+    }
+</script>
+</body>
+</html>
