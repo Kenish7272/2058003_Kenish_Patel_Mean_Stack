@@ -1,0 +1,33 @@
+<div>
+    <div class="welcome-div">
+      <h3>Welcome {{ username }} <button (click)="logout()" class="">Logout</button></h3>
+    </div>
+    <form action="">
+      <div class="container">
+        <label for="name"><b>Contact Name</b></label>
+        <input [(ngModel)]="name" type="text" placeholder="Enter Contact Name" name="name" id="name" required>
+  
+        <label for="number"><b>Phone</b></label>
+        <input [(ngModel)]="number" type="number" placeholder="Enter Phone" name="number" id="number" required>
+        <hr>
+        <button (click)="save()" type="button" class="registerbtn">Add</button>
+  
+        <table id="table">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let contact of contacts">
+            <td>{{ contact.name }}</td>
+            <td>{{ contact.number }}</td>
+          </tr>
+          </tbody>
+        </table>
+  
+      </div>
+    </form>
+  </div>
+  

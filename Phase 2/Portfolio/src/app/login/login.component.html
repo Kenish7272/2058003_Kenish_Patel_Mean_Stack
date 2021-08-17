@@ -1,0 +1,20 @@
+<form action="">
+    <div class="container">
+      <h1>Login</h1>
+      <hr>
+  
+      <label for="username"><b>Username</b></label>
+      <input [(ngModel)]="username" type="text" placeholder="Enter Username" name="username" id="username" required>
+  
+      <label for="psw"><b>Password</b></label>
+      <input [(ngModel)]="password" type="password" placeholder="Enter Password" name="psw" id="psw" required>
+      <hr>
+  
+      <button (click)="onSubmit()" type="button" class="registerbtn">Login</button>
+    </div>
+  
+    <div class="container signin">
+      <p>Don't have account? <a routerLink="/register" type="button" >Register Here</a>.</p>
+    </div>
+  </form>
+  
