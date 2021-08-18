@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<h2>Task Tracker</h2>
+
+<hr style="line-height: 2px">
+
+<div class="row">
+  <div class="column">
+    <h3>To-Do Tasks</h3>
+    <form (ngSubmit)="save()">
+      <label id="id">ID: </label>
+      <input [(ngModel)]="id" name="id" type="number" required><br>
+      <label id="name">Name: </label>
+      <input [(ngModel)]="name" name="name" type="text" required><br>
+      <label id="task">Task: </label>
+      <input [(ngModel)]="task" name="task" type="text" required><br>
+      <label id="deadline">Deadline</label>
+      <input [(ngModel)]="deadline" name="deadline" type="date" required>
+      <br>
+      <button class="btn" type="submit">Submit</button>
+    </form>
+  </div>
+  <div class="column">
+
+    <h3 style="margin-top: 25px">To-Do List</h3>
+    <table style="margin-top: 40px">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Task</th>
+        <th>Deadline</th>
+      </tr>
+      <tr *ngFor="let item of tasks">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.task }}</td>
+        <td>{{ item.deadline }}</td>
+      </tr>
+
+    </table>
+  </div>
+</div>
+
+</body>
+</html>
