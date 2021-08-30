@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tasks</title>
+</head>
+<body>
+
+<a href="/create">Add Task</a>
+<br>
+<br>
+
+<table id="table" border="1px solid black" width="100%; padding:20px">
+    <thead>
+    <tr>
+        <th>Task ID</th>
+        <th>Emp ID</th>
+        <th>Task</th>
+        <th>Deadline</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            'type':'get',
+            'url': '/api',
+            'dataType': 'json',
+            success: function (data){
+                console.log(data)
+
+                var table = document.getElementById('table');
+
+                for(var k in data){
+                    var row = table.insertRow();
+                    var col1 = row.insertCell();
+                    var col2 = row.insertCell();
+                    var col3 = row.insertCell();
+                    var col4 = row.insertCell();
+                    var col5 = row.insertCell();
+                    col1.innerHTML = data[k].taskId;
+                    col2.innerHTML = data[k].empId;
+                    col3.innerHTML = data[k].task;
+                    col4.innerHTML = data[k].deadline;
+                    col5.innerHTML = `<a href="/delete/${data[k].taskId}">Delete</a>`
+                }
+
+            },
+        })
+    })
+</script>
+
+</html>
