@@ -1,0 +1,38 @@
+<html>
+<head><title>Task Tracker My Site</title>
+    <link rel="style.css"/>
+</head>
+</html>
+<body>
+<!--<form onsubmit="save(event)">-->
+<form action="/store" method="post">
+    <p>
+        Course ID:<input type="number" name="_id" value="" required="true"/><br/><br/>Emp
+        Name:<input type="text" name="name" value="" required="true"/><br/><br/>
+        Description<input type="text" name="description" value="" required="true"/><br/><br/>
+        Amount<input type="number" name="amount" value="" required="true"/><br/><br/>
+    </p>
+    <input type="reset" value="Reset"/>
+    <input type="submit" value="Create"/>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script>
+
+    function save(e){
+        e.preventDefault();
+
+        $.ajax({
+            'url' : 'store',
+            'type': 'post',
+            data:  $('form').serializeArray(),
+            'success': function (data){
+                console.log(data)
+                // window.location.href = '/';
+            }
+        })
+    }
+
+</script>
+</body>
